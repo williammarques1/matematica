@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ object.nome }}</h1>
+  
+  <h2>Perguntas relacionadas:</h2>
+  <ul class="list-group">
+    {% for pergunta in object.pergunta_set.all %}
+      <li class="list-group-item">
+        <a href="{% url 'pergunta_detail' pk=pergunta.pk %}">{{ pergunta.enunciado }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Nenhuma pergunta encontrada.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Lista de Perguntas</h1>
+      <hr>
+      <a href="{% url 'pergunta_create' %}" class="btn btn-primary">Criar Pergunta</a>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Enunciado</th>
+            <th>Dificuldade</th>
+            <th>Tema</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pergunta in object_list %}
+          <tr>
+            <td>{{ pergunta.enunciado }}</td>
+            <td>{{ pergunta.dificuldade }}</td>
+            <td>{{ pergunta.tema }}</td>
+            <td>
+              <a href="{% url 'pergunta_detail' pergunta.pk %}" class="btn btn-info">Detalhes</a>
+              <a href="{% url 'pergunta_update' pergunta.pk %}" class="btn btn-warning">Editar</a>
+              <a href="{% url 'pergunta_delete' pergunta.pk %}" class="btn btn-danger">Excluir</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-5">
+    <h1>Lista de Temas</h1>
+    <hr>
+    <div class="d-flex justify-content-between mb-3">
+      <a class="btn btn-primary" href="{% url 'tema_create' %}">Criar novo tema</a>
+    </div>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tema in object_list %}
+        <tr>
+          <td>{{ tema.nome }}</td>
+          <td>
+            <a class="btn btn-info" href="{% url 'tema_detail' tema.pk %}">Detalhes</a>
+            <a class="btn btn-warning" href="{% url 'tema_update' tema.pk %}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'tema_delete' tema.pk %}">Deletar</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="2">Não há temas cadastrados.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Detalhes da Pergunta</h4>
+      </div>
+      <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-3">Enunciado:</dt>
+          <dd class="col-sm-9">{{ pergunta.enunciado }}</dd>
+
+          <dt class="col-sm-3">Tema:</dt>
+          <dd class="col-sm-9">{{ pergunta.tema }}</dd>
+
+          <dt class="col-sm-3">Dificuldade:</dt>
+          <dd class="col-sm-9">{{ pergunta.dificuldade }}</dd>
+
+          <div class="btn-group mr-2" role="group" aria-label="Ações">
+            <a class="btn btn-secondary" href="{% url 'pergunta_update' pk=pergunta.pk %}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'pergunta_delete' pk=pergunta.pk %}">Excluir</a>
+          </div>
+          <a class="btn btn-primary" href="{% url 'pergunta_create' %}">Nova Pergunta</a>
+          
+        </dl>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Confirmar exclusão</h1>
+  <p>Tem certeza que deseja excluir a pergunta "{{ pergunta.enunciado }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'pergunta_list' %}">Cancelar</a>
+  </form>
+{% endblock %}
